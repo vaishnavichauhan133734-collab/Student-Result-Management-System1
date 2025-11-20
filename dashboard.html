@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+<script src="students.js" defer></script>
+<script src="main.js" defer></script>
+</head>
+<body class="vibrant-bg">
+
+<nav class="navbar">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="login.html" class="nav-link">Student Login</a>
+    <a href="admin-login.html" class="nav-link">Admin Login</a>
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="help.html" class="nav-link">Help</a>
+</nav>
+
+<div class="dashboard-container fade-in">
+    <h1>Admin Dashboard</h1>
+    <div class="card-grid">
+        <div class="card">
+            <h2>Total Students</h2>
+            <p id="totalStudents">--</p>
+        </div>
+        <div class="card">
+            <h2>Passed Students</h2>
+            <p id="passedCount">--</p>
+        </div>
+        <div class="card">
+            <h2>Failed Students</h2>
+            <p id="failedCount">--</p>
+        </div>
+        <div class="card">
+            <h2>Check Results</h2>
+            <a href="login.html" class="btn small">Student Login</a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+window.onload = function() {
+    const total = students.length;
+    const failed = students.filter(s => Object.values(s.subjects).some(m => m < 33)).length;
+    const passed = total - failed;
+
+    document.getElementById("totalStudents").innerText = total;
+    document.getElementById("passedCount").innerText = passed;
+    document.getElementById("failedCount").innerText = failed;
+};
+</script>
+
+</body>
+</html>
